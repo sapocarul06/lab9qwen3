@@ -10,14 +10,13 @@ namespace ProductsApp
         {
             // Configurați șirul de conexiune către baza de date SQL Server
             // Modificați această valoare în funcție de configurația dumneavoastră
-            string connectionString = "Server=localhost;Database=ProductsDB;Integrated Security=true;TrustServerCertificate=true;";
+            string connectionString = "Server=localhost;Database=ProductsDB;Integrated Security=true;";
 
             // Pentru autentificare cu username și parolă, folosiți:
-            // string connectionString = "Server=localhost;Database=ProductsDB;User Id=your_username;Password=your_password;TrustServerCertificate=true;";
+            // string connectionString = "Server=localhost;Database=ProductsDB;User Id=your_username;Password=your_password;";
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
 
             try
             {

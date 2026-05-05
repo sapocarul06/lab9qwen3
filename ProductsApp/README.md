@@ -1,65 +1,64 @@
-# Aplicație Gestiune Produse - C# Windows Forms
+# Aplicație Gestiune Produse - .NET Framework 4.7.2
 
-Această aplicație implementează operațiile CRUD (Create, Read, Update, Delete) pentru gestionarea produselor, cu stocarea datelor într-o bază de date SQL Server.
+Această aplicație Windows Forms implementează operațiile CRUD (Create, Read, Update, Delete) pentru gestionarea produselor, cu datele stocate într-o bază de date SQL Server.
 
-## Structura Proiectului
+## Cerințe de sistem
 
-```
-ProductsApp/
-├── ProductsApp.csproj    # Fișierul de proiect .NET
-├── Program.cs            # Punctul de intrare al aplicației
-├── MainForm.cs           # Formularul principal cu interfața grafică
-├── Product.cs            # Modelul de date pentru produs
-└── DatabaseHelper.cs     # Clasa pentru accesul la baza de date
-```
-
-## Cerințe
-
-- .NET 6.0 sau versiune mai recentă
-- SQL Server (Express, Developer sau orice altă ediție)
-- Windows (pentru interfața Windows Forms)
+- **Windows** (aplicația este Windows Forms)
+- **.NET Framework 4.7.2** sau o versiune mai recentă
+- **SQL Server** (Express, Developer sau orice altă ediție)
+- **Visual Studio 2017+** (recomandat pentru compilare și debug)
 
 ## Configurare
 
-### 1. Configurați șirul de conexiune
+### 1. Instalare .NET Framework 4.7.2
 
-Deschideți fișierul `Program.cs` și modificați șirul de conexiune în funcție de configurația dumneavoastră:
+Descărcați și instalați .NET Framework 4.7.2 de la:
+https://dotnet.microsoft.com/download/dotnet-framework/net472
+
+### 2. Configurare SQL Server
+
+1. Asigurați-vă că SQL Server este instalat și rulează
+2. Actualizați șirul de conexiune în fișierul `Program.cs`:
 
 ```csharp
-// Pentru autentificare Windows:
-string connectionString = "Server=localhost;Database=ProductsDB;Integrated Security=true;TrustServerCertificate=true;";
-
-// Pentru autentificare SQL Server:
-string connectionString = "Server=localhost;Database=ProductsDB;User Id=your_username;Password=your_password;TrustServerCertificate=true;";
+string connectionString = "Server=localhost;Database=ProductsDB;Integrated Security=true;";
 ```
 
-### 2. Construirea aplicației
-
-```bash
-cd ProductsApp
-dotnet restore
-dotnet build
+Pentru autentificare cu username și parolă:
+```csharp
+string connectionString = "Server=localhost;Database=ProductsDB;User Id=your_username;Password=your_password;";
 ```
 
-### 3. Rularea aplicației
+### 3. Deschidere în Visual Studio
 
-```bash
-dotnet run
+1. Deschideți Visual Studio
+2. Selectați **File > Open > Project/Solution**
+3. Navigați la `ProductsApp.csproj` și deschideți-l
+4. Compilați proiectul (**Build > Build Solution** sau Ctrl+Shift+B)
+5. Rulați aplicația (**Debug > Start Debugging** sau F5)
+
+## Alternativ: Compile din linia de comandă
+
+Dacă aveți MSBuild instalat (vine cu Visual Studio):
+
+```cmd
+msbuild ProductsApp.csproj /p:Configuration=Release
 ```
+
+Aplicația compilată va fi în `bin\Release\ProductsApp.exe`
 
 ## Funcționalități
 
-Aplicația oferă următoarele funcționalități:
+- **Afișare produse**: Toate produsele sunt afișate într-un DataGridView
+- **Adăugare produs**: Introduceți numele, prețul și cantitatea, apoi apăsați "Adaugă"
+- **Editare produs**: Selectați un produs din tabel, modificați câmpurile și apăsați "Editează"
+- **Ștergere produs**: Selectați un produs și apăsați "Șterge" (cu confirmare)
+- **Reîmprospătare**: Butonul "Reîmprospătează" reîncarcă lista de produse
 
-1. **Afișare produse**: Toate produsele sunt afișate într-un tabel (DataGridView)
-2. **Adăugare produs**: Introduceți numele, prețul și cantitatea, apoi apăsați "Adaugă"
-3. **Editare produs**: Selectați un produs din tabel, modificați câmpurile și apăsați "Editează"
-4. **Ștergere produs**: Selectați un produs din tabel și apăsați "Șterge"
-5. **Reîmprospătare**: Actualizați lista de produse apăsând "Reîmprospătează"
+## Structura bazei de date
 
-## Baza de Date
-
-Aplicația creează automat tabela `Products` dacă nu există, cu următoarea structură:
+Tabela `Products` este creată automat la prima rulare cu următoarea structură:
 
 ```sql
 CREATE TABLE Products (
@@ -70,8 +69,22 @@ CREATE TABLE Products (
 )
 ```
 
-## Note Importante
+## Depanare
 
-- Asigurați-vă că SQL Server este instalat și rulează înainte de a porni aplicația
-- Dacă utilizați o instanță numită de SQL Server, actualizați șirul de conexiune (de exemplu: `Server=localhost\\SQLEXPRESS`)
-- Aplicația folosește `TrustServerCertificate=true` pentru dezvoltare locală. În producție, configurați certificatele corespunzător.
+### Eroare de conectare la baza de date
+
+1. Verificați dacă SQL Server rulează
+2. Confirmați că șirul de conexiune este corect
+3. Asigurați-vă că aveți permisiuni pentru a crea/accesa baza de date
+
+### Eroare de compilare
+
+1. Verificați dacă .NET Framework 4.7.2 este instalat
+2. Deschideți Visual Studio ca Administrator
+3. Rebuild la soluție (**Build > Rebuild Solution**)
+
+## Note
+
+- Aplicația folosește `System.Data.SqlClient` inclus în .NET Framework 4.7.2
+- Interfața este complet construită din cod (nu necesită fișiere .designer complexe)
+- Validările de input previn introducerea de date incorecte

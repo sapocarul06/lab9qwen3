@@ -99,7 +99,7 @@ namespace ProductsApp
             }
         }
 
-        private void DataGridView_CellClick(object? sender, DataGridViewCellEventArgs e)
+        private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -111,7 +111,7 @@ namespace ProductsApp
             }
         }
 
-        private void BtnAdd_Click(object? sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -151,7 +151,7 @@ namespace ProductsApp
             }
         }
 
-        private void BtnEdit_Click(object? sender, EventArgs e)
+        private void BtnEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -198,7 +198,7 @@ namespace ProductsApp
             }
         }
 
-        private void BtnDelete_Click(object? sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
             try
             {
@@ -225,7 +225,7 @@ namespace ProductsApp
             }
         }
 
-        private void BtnRefresh_Click(object? sender, EventArgs e)
+        private void BtnRefresh_Click(object sender, EventArgs e)
         {
             ClearFields();
             LoadProducts();

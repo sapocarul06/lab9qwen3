@@ -1,11 +1,10 @@
 ```
 # Build artifacts
+*.obj
 *.exe
 *.dll
 *.pdb
 *.userprefs
-*.cache
-*.tmp
 
 # Dependencies
 packages/
@@ -33,4 +32,22 @@ obj/
 Thumbs.db
 ehthumbs.db
 Icon?
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Test results
+TestResults/
+
+# Publish artifacts
+publish/
+app.publish/
+
+# NuGet packages
+*.nupkg
+!*.nupkg.sha512
+.nuget/
 ```

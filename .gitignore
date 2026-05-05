@@ -1,53 +1,32 @@
 ```
-# Build artifacts
+# Compiled and build artifacts
 *.obj
 *.exe
 *.dll
-*.pdb
-*.userprefs
-
+*.so
+*.a
+*.o
+*.out
+*.pyc
+__pycache__/
+*.class
 # Dependencies
-packages/
-bin/
-obj/
-
-# Logs
-*.log
-
-# Environment
+node_modules/
+venv/
+.venv/
 .env
 .env.local
-*.env.*
-
+.env.*
 # Editors
-.vs/
 .vscode/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-
-# OS generated files
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-desktop.ini
-
-# Temporary files
+.idea/
+*.swp
+*.swo
 *.tmp
-*.temp
-*.bak
-
-# Test results
-TestResults/
-
-# Publish artifacts
-publish/
-app.publish/
-
-# NuGet packages
-*.nupkg
-!*.nupkg.sha512
-.nuget/
+# Logs
+*.log
+# Build directories
+dist/
+build/
+target/
 ```
